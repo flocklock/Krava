@@ -41,6 +41,7 @@ class Message {
   double lon = 0.0;
   double battery = 0.0;
   String time = "00:00";
+  String name = "empty";
   //ACTIVITY lastActivity = ACTIVITY.OTHER;
   Map<ACTIVITY, int> activities = {};
   int devID = 0;
@@ -50,6 +51,7 @@ class Message {
     final items = input.split(',');
     //this.devID = int.parse(items[2]);
     this.time = items[3];
+    this.name = items[5];
     this.battery = double.parse(items[4]);
     this.lat = double.parse(items[0]);
     this.lon = double.parse(items[1]);
@@ -61,9 +63,11 @@ class Message {
 }
 
 class ImprovedMarker {
-  LatLng coordinates;
+  LatLng coordinates = LatLng(50.1092300, 14.4372622);
   double opacity = 1;
-  ImprovedMarker({required this.coordinates});
+  String name = 'empty';
+  ImprovedMarker({required this.coordinates, required this.name});
+  ImprovedMarker.basic();
 
   Marker getMarker(BuildContext context) {
     return Marker(

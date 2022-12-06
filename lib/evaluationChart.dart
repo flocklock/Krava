@@ -74,6 +74,7 @@ class ActivityStatus extends ChartData<LabelData, int>
   };
   final String time;
   final Map<ACTIVITY, int> activities;
+  final String name;
   final VoidCallback? onPressed;
 
   static Map<LabelData, int> convertActivitiesToMapOfLabelDataInt(
@@ -92,7 +93,10 @@ class ActivityStatus extends ChartData<LabelData, int>
       activities.values.reduce((total, value) => total = total + value);
 
   ActivityStatus(
-      {required this.time, this.activities = const {}, this.onPressed})
+      {required this.time,
+      required this.name,
+      this.activities = const {},
+      this.onPressed})
       : super(
           labelWithValue: convertActivitiesToMapOfLabelDataInt(activities),
           barLabel: time,

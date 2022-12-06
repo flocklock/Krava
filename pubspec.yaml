@@ -39,6 +39,7 @@ dependencies:
   mqtt_client: ^9.7.2
   flutter_map: ^3.0.0
   stacked_chart: ^0.0.6
+  get: ^4.6.5
 
 dev_dependencies:
   flutter_test:

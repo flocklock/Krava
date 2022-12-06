@@ -13,7 +13,8 @@ import 'package:latlong2/latlong.dart';
 import 'dart:math' as math;
 
 class Animal extends StatefulWidget {
-  const Animal({super.key});
+  String name = '';
+  Animal({super.key, required this.name});
 
   @override
   State<Animal> createState() => _AnimalState();
@@ -23,6 +24,9 @@ class _AnimalState extends State<Animal> {
   Queue<Message> messages = Queue();
   Queue<ImprovedMarker> myMarkers = Queue();
   Queue<ActivityStatus> activityData = Queue();
+  List<ImprovedMarker> allMarkers =
+      List<ImprovedMarker>.filled(3, ImprovedMarker.basic());
+  String animal = 'all';
   double battery = 0;
   int messNumber = 0;
 
@@ -47,13 +51,18 @@ class _AnimalState extends State<Animal> {
         messNumber++;
         Message mess = Message.FromString(pt);
         messages.addFirst(mess);
-        for (var item in myMarkers.take(10)) {
+        for (var item
+            in myMarkers.where((element) => element.name == animal).take(10)) {
           item.opacity -= 0.1;
         }
-        myMarkers
-            .addFirst(ImprovedMarker(coordinates: LatLng(mess.lat, mess.lon)));
+        allMarkers[int.parse(mess.name[mess.name.length - 1]) - 1] =
+            ImprovedMarker(
+                coordinates: LatLng(mess.lat, mess.lon), name: mess.name);
+        myMarkers.addFirst(ImprovedMarker(
+            name: mess.name, coordinates: LatLng(mess.lat, mess.lon)));
         activityData.addFirst(
-          ActivityStatus(time: mess.time, activities: mess.activities),
+          ActivityStatus(
+              time: mess.time, activities: mess.activities, name: mess.name),
         );
       });
     });
@@ -67,33 +76,81 @@ class _AnimalState extends State<Animal> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(" Sync: ${messages.first.time}"),
+            Text(
+                " Sync: ${messages.isNotEmpty ? messages.first.time : '00:00'}"),
             Row(
               children: [
                 Transform.rotate(
                     child: Icon(Icons.battery_5_bar_sharp, size: 50),
                     angle: math.pi / 2),
                 Text(
-                  '${(messages.first.battery / 4400.0 * 100).toInt()} %',
+                  '${(messages.isNotEmpty ? messages.first.battery / 4400.0 * 100 : 0.0).toInt()} %',
                   style: TextStyle(fontSize: 20),
                 )
               ],
             ),
           ],
         ),
-        Map(
-          markers: myMarkers
-              .take(10)
-              .map((e) => e.getMarker(context))
-              .toList()
-              .reversed
-              .toList(),
-        ),
+        animal == 'all'
+            ? Map(
+                markers: allMarkers
+                    .map((e) => e.getMarker(context))
+                    .toList()
+                    .reversed
+                    .toList(),
+              )
+            : Map(
+                markers: myMarkers
+                    .where((element) => element.name == animal)
+                    .take(10)
+                    .map((e) => e.getMarker(context))
+                    .toList()
+                    .reversed
+                    .toList(),
+              ),
         SizedBox(
           height: 30,
         ),
-        EvaluationChart(
-          activityStatus: activityData.take(8).toList(),
+        animal != 'all'
+            ? EvaluationChart(
+                activityStatus: activityData
+                    .where((element) => element.name == animal)
+                    .take(8)
+                    .toList(),
+              )
+            : Container(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(
+                onPressed: (() {
+                  setState(() {
+                    animal = 'ovce1';
+                  });
+                }),
+                child: Text('Shaun')),
+            ElevatedButton(
+                onPressed: (() {
+                  setState(() {
+                    animal = 'ovce2';
+                  });
+                }),
+                child: Text('Orwell')),
+            ElevatedButton(
+                onPressed: (() {
+                  setState(() {
+                    animal = 'ovce3';
+                  });
+                }),
+                child: Text('Pešek')),
+            ElevatedButton(
+                onPressed: (() {
+                  setState(() {
+                    animal = 'all';
+                  });
+                }),
+                child: Text('Všechny')),
+          ],
         ),
       ],
     );
