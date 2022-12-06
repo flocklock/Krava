@@ -78,14 +78,14 @@ class _AnimalState extends State<Animal> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-                " Sync: ${messages.isNotEmpty ? messages.first.time : '00:00'}"),
+                " Sync: ${messages.where((e) => e.name == animal).isNotEmpty ? messages.where((e) => e.name == animal).first.time : '00:00'}"),
             Row(
               children: [
                 Transform.rotate(
                     child: Icon(Icons.battery_5_bar_sharp, size: 30),
                     angle: math.pi / 2),
                 Text(
-                  '${(messages.isNotEmpty ? messages.first.battery / 4400.0 * 100 : 0.0).toInt()} %',
+                  '${(messages.where((e) => e.name == animal).isNotEmpty ? messages.where((e) => e.name == animal).first.battery / 4400.0 * 100 : 0.0).toInt()} %',
                   style: TextStyle(fontSize: 20),
                 )
               ],
@@ -110,7 +110,7 @@ class _AnimalState extends State<Animal> {
                     .toList(),
               ),
         SizedBox(
-          height: 30,
+          height: 15,
         ),
         animal != 'all'
             ? EvaluationChart(
@@ -153,7 +153,56 @@ class _AnimalState extends State<Animal> {
                 child: Text('Všechny')),
           ],
         ),
+        animal != 'all'
+            ? Column(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ColorInfo(
+                      activity: ACTIVITY.WALK,
+                    ),
+                    ColorInfo(
+                      activity: ACTIVITY.GRAZE,
+                    ),
+                    ColorInfo(
+                      activity: ACTIVITY.RUMINATE,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ColorInfo(
+                      activity: ACTIVITY.STILL,
+                    ),
+                    ColorInfo(
+                      activity: ACTIVITY.GROUND,
+                    ),
+                    ColorInfo(
+                      activity: ACTIVITY.UNKNOWN,
+                    ),
+                  ],
+                ),
+              ])
+            : Container(),
       ],
     );
+  }
+}
+
+class ColorInfo extends StatelessWidget {
+  ACTIVITY activity;
+  ColorInfo({super.key, required this.activity});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(children: [
+      Icon(
+        Icons.square,
+        color: ActivityStatus.activityColors[activity],
+        size: 15,
+      ),
+      Text(activity.toString().split('.')[1], style: TextStyle(fontSize: 15))
+    ]);
   }
 }
