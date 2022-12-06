@@ -82,7 +82,7 @@ class _AnimalState extends State<Animal> {
             Row(
               children: [
                 Transform.rotate(
-                    child: Icon(Icons.battery_5_bar_sharp, size: 50),
+                    child: Icon(Icons.battery_5_bar_sharp, size: 30),
                     angle: math.pi / 2),
                 Text(
                   '${(messages.isNotEmpty ? messages.first.battery / 4400.0 * 100 : 0.0).toInt()} %',
