@@ -51,8 +51,9 @@ class _AnimalState extends State<Animal> {
         messNumber++;
         Message mess = Message.FromString(pt);
         messages.addFirst(mess);
-        for (var item
-            in myMarkers.where((element) => element.name == animal).take(10)) {
+        for (var item in myMarkers
+            .where((element) => element.name == mess.name)
+            .take(9)) {
           item.opacity -= 0.1;
         }
         allMarkers[int.parse(mess.name[mess.name.length - 1]) - 1] =
