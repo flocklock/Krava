@@ -110,7 +110,7 @@ class _AnimalState extends State<Animal> {
                     .toList(),
               ),
         SizedBox(
-          height: 15,
+          height: 25,
         ),
         animal != 'all'
             ? EvaluationChart(
@@ -152,6 +152,9 @@ class _AnimalState extends State<Animal> {
                 }),
                 child: Text('Všechny')),
           ],
+        ),
+        SizedBox(
+          height: 20,
         ),
         animal != 'all'
             ? Column(children: [

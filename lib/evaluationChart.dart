@@ -23,7 +23,7 @@ class _EvaluationChartState extends State<EvaluationChart> {
     return StackedChart(
       data: widget.activityStatus,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      size: const Size(340, 170),
+      size: const Size(340, 220),
       showLabel: true,
       enableShadow: true,
       buffer: 0,

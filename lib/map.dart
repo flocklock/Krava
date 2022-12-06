@@ -18,7 +18,7 @@ class _MapState extends State<Map> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
+      height: 350,
       child: FlutterMap(
         options: MapOptions(
           //center: LatLng(49.71576, 14.47995), // lukas
