@@ -40,6 +40,7 @@ dependencies:
   flutter_map: ^3.0.0
   stacked_chart: ^0.0.6
   get: ^4.6.5
+  wakelock: ^0.6.2
 
 dev_dependencies:
   flutter_test:

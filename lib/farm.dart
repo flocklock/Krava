@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:wakelock/wakelock.dart';
 
 import 'animal.dart';
 import 'main.dart';
@@ -17,6 +18,7 @@ class _FarmState extends State<Farm> {
   final Future<bool> _connect = mqtt.connect();
   @override
   Widget build(BuildContext context) {
+    Wakelock.enable();
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
