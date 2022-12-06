@@ -22,8 +22,8 @@ class _MapState extends State<Map> {
       child: FlutterMap(
         options: MapOptions(
           //center: LatLng(49.71576, 14.47995), // lukas
-          center: LatLng(50.10918, 14.43763),
-          zoom: 15.0,
+          center: LatLng(50.1097392, 14.4352667),
+          zoom: 17.0,
         ),
         nonRotatedChildren: [
           AttributionWidget.defaultWidget(

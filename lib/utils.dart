@@ -34,23 +34,29 @@ Future<String> getLocalIpAddress() async {
   }
 }
 
-enum ACTIVITY { GROUND, STILL, RUMINATE, GRAZE, WALK, OTHER }
+enum ACTIVITY { GROUND, STILL, RUMINATE, GRAZE, WALK, UNKNOWN }
 
 class Message {
-  int time = 0;
   double lat = 0.0;
   double lon = 0.0;
   double battery = 0.0;
-  ACTIVITY lastActivity = ACTIVITY.OTHER;
+  String time = "00:00";
+  //ACTIVITY lastActivity = ACTIVITY.OTHER;
+  Map<ACTIVITY, int> activities = {};
   int devID = 0;
 
-  Message(this.time, this.lat, this.lon, this.devID);
+  Message(this.time, this.lat, this.lon, this.devID, this.activities);
   Message.FromString(String input) {
     final items = input.split(',');
     //this.devID = int.parse(items[2]);
-    //this.time = int.parse(items[3]);
+    this.time = items[3];
+    this.battery = double.parse(items[4]);
     this.lat = double.parse(items[0]);
     this.lon = double.parse(items[1]);
+    List<int> l = items[2].split('-').map((e) => int.parse(e)).toList();
+    ACTIVITY.values.asMap().forEach((key, value) {
+      activities[value] = key < l.length ? l[key] : 0;
+    });
   }
 }
 
@@ -66,7 +72,7 @@ class ImprovedMarker {
           child: Icon(
         Icons.location_on,
         size: opacity == 1 ? 35 : 25,
-        color: opacity == 1 ? Colors.red : Colors.black.withOpacity(opacity),
+        color: opacity == 1 ? Colors.blue : Colors.black.withOpacity(opacity),
       )),
     );
   }
