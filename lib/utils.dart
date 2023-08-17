@@ -40,6 +40,7 @@ class Message {
   double lat = 0.0;
   double lon = 0.0;
   double battery = 0.0;
+  double totalActivity = 0.0;
   String time = "00:00";
   String name = "empty";
   //ACTIVITY lastActivity = ACTIVITY.OTHER;
@@ -55,6 +56,7 @@ class Message {
     this.battery = double.parse(items[4]);
     this.lat = double.parse(items[0]);
     this.lon = double.parse(items[1]);
+    this.totalActivity = double.parse(items[6]);
     List<int> l = items[2].split('-').map((e) => int.parse(e)).toList();
     ACTIVITY.values.asMap().forEach((key, value) {
       activities[value] = key < l.length ? l[key] : 0;

@@ -126,24 +126,17 @@ class _AnimalState extends State<Animal> {
             ElevatedButton(
                 onPressed: (() {
                   setState(() {
-                    animal = 'ovce1';
+                    animal = 'hub1';
                   });
                 }),
-                child: Text('Shaun')),
+                child: Text('Jahoda')),
             ElevatedButton(
                 onPressed: (() {
                   setState(() {
-                    animal = 'ovce2';
+                    animal = 'hub0';
                   });
                 }),
-                child: Text('Orwell')),
-            ElevatedButton(
-                onPressed: (() {
-                  setState(() {
-                    animal = 'ovce3';
-                  });
-                }),
-                child: Text('Pešek')),
+                child: Text('Malina')),
             ElevatedButton(
                 onPressed: (() {
                   setState(() {

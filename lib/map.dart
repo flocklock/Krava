@@ -23,7 +23,7 @@ class _MapState extends State<Map> {
         options: MapOptions(
           //center: LatLng(49.71576, 14.47995), // lukas
           center: LatLng(50.1097392, 14.4352667),
-          zoom: 17.0,
+          zoom: 8.0,
         ),
         nonRotatedChildren: [
           AttributionWidget.defaultWidget(

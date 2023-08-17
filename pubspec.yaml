@@ -41,6 +41,7 @@ dependencies:
   stacked_chart: ^0.0.6
   get: ^4.6.5
   wakelock: ^0.6.2
+  flutter_launcher_icons: ^0.11.0
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +64,14 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/logo_app.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:
