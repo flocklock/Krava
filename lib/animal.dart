@@ -25,7 +25,7 @@ class _AnimalState extends State<Animal> {
   Queue<ImprovedMarker> myMarkers = Queue();
   Queue<ActivityStatus> activityData = Queue();
   List<ImprovedMarker> allMarkers =
-      List<ImprovedMarker>.filled(3, ImprovedMarker.basic());
+      List<ImprovedMarker>.filled(4, ImprovedMarker.basic());
   String animal = 'all';
   double battery = 0;
   int messNumber = 0;
@@ -56,9 +56,8 @@ class _AnimalState extends State<Animal> {
             .take(9)) {
           item.opacity -= 0.1;
         }
-        allMarkers[int.parse(mess.name[mess.name.length - 1]) - 1] =
-            ImprovedMarker(
-                coordinates: LatLng(mess.lat, mess.lon), name: mess.name);
+        allMarkers[int.parse(mess.name[mess.name.length - 1])] = ImprovedMarker(
+            coordinates: LatLng(mess.lat, mess.lon), name: mess.name);
         myMarkers.addFirst(ImprovedMarker(
             name: mess.name, coordinates: LatLng(mess.lat, mess.lon)));
         activityData.addFirst(
@@ -126,17 +125,24 @@ class _AnimalState extends State<Animal> {
             ElevatedButton(
                 onPressed: (() {
                   setState(() {
-                    animal = 'hub1';
+                    animal = 'kone0';
                   });
                 }),
-                child: Text('Jahoda')),
+                child: Text('Kůň 1')),
             ElevatedButton(
                 onPressed: (() {
                   setState(() {
-                    animal = 'hub0';
+                    animal = 'kone1';
                   });
                 }),
-                child: Text('Malina')),
+                child: Text('Kůň 2')),
+            ElevatedButton(
+                onPressed: (() {
+                  setState(() {
+                    animal = 'kone2';
+                  });
+                }),
+                child: Text('Kůň 3')),
             ElevatedButton(
                 onPressed: (() {
                   setState(() {
