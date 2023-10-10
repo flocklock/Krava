@@ -22,7 +22,8 @@ class _MapState extends State<Map> {
       child: FlutterMap(
         options: MapOptions(
           //center: LatLng(49.71576, 14.47995), // lukas
-          center: LatLng(49.94271, 17.89139),
+          //center: LatLng(49.94271, 17.89139), // hynek
+          center: LatLng(49.6745289, 16.9645311), // slavetin
           zoom: 8.0,
         ),
         nonRotatedChildren: [

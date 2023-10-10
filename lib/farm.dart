@@ -27,7 +27,7 @@ class _FarmState extends State<Farm> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Animal(name: 'Střítež'),
+            Animal(name: 'Slavětín'),
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
