@@ -125,24 +125,38 @@ class _AnimalState extends State<Animal> {
             ElevatedButton(
                 onPressed: (() {
                   setState(() {
-                    animal = 'demo0';
+                    animal = 'sed0';
                   });
                 }),
-                child: Text('Demo open')),
+                child: Text('Mokřina')),
             ElevatedButton(
                 onPressed: (() {
                   setState(() {
-                    animal = 'demo1';
+                    animal = 'sed1';
                   });
                 }),
-                child: Text('Demo closed')),
+                child: Text('Bella')),
+            ElevatedButton(
+                onPressed: (() {
+                  setState(() {
+                    animal = 'sed2';
+                  });
+                }),
+                child: Text('Grizella')),
+            ElevatedButton(
+                onPressed: (() {
+                  setState(() {
+                    animal = 'sed3';
+                  });
+                }),
+                child: Text('Kometa')),
             ElevatedButton(
                 onPressed: (() {
                   setState(() {
                     animal = 'all';
                   });
                 }),
-                child: Text('Všechny')),
+                child: Text('All')),
           ],
         ),
         SizedBox(

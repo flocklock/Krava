@@ -38,7 +38,7 @@ class MQTT {
     /// client identifier, any supplied username/password and clean session,
     /// an example of a specific one below.
     final connMess = MqttConnectMessage()
-        .withClientIdentifier('Mqtt_demo_praha3')
+        .withClientIdentifier('Mqtt_demo_test2')
         .withWillTopic(
             'willtopic') // If you set this you must set a will message
         .withWillMessage('My Will message')
@@ -75,7 +75,7 @@ class MQTT {
 
     /// Ok, lets try a subscription
     print('EXAMPLE::Subscribing to the fl/tou/app topic');
-    const topic = 'fl/sed/demo'; // Not a wildcard topic
+    const topic = 'fl/demo/demo'; // Not a wildcard topic
     client.subscribe(topic, MqttQos.atLeastOnce);
 
     return true;
