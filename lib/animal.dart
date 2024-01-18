@@ -128,14 +128,14 @@ class _AnimalState extends State<Animal> {
                     animal = 'demo0';
                   });
                 }),
-                child: Text('Demo open')),
+                child: Text('Kůň A')),
             ElevatedButton(
                 onPressed: (() {
                   setState(() {
                     animal = 'demo1';
                   });
                 }),
-                child: Text('Demo closed')),
+                child: Text('Kůň B')),
             ElevatedButton(
                 onPressed: (() {
                   setState(() {

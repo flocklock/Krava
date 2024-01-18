@@ -38,7 +38,7 @@ class MQTT {
     /// client identifier, any supplied username/password and clean session,
     /// an example of a specific one below.
     final connMess = MqttConnectMessage()
-        .withClientIdentifier('Mqtt_demo_praha3')
+        .withClientIdentifier('Mqtt_otice_live')
         .withWillTopic(
             'willtopic') // If you set this you must set a will message
         .withWillMessage('My Will message')
